@@ -1,0 +1,7 @@
+class Constants {
+  static const String SERVICE_UUID = "0000FFE5-0000-1000-8000-00805f9b34fb";
+  static const String CHARACTERISTIC_WRITE_UUID =
+      "0000FFE9-0000-1000-8000-00805f9b34fb";
+  static const String CHARACTERISTIC_READ_NOTIFY =
+      "0000FFE2-0000-1000-8000-00805f9b34fb";
+}
