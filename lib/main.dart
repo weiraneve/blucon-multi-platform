@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
+      backgroundColor: const Color(0xFFE7B8B8),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
