@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
@@ -22,8 +23,18 @@ class BluetoothViewModel extends ChangeNotifier {
   Future<void> startScan() async {
     if (_connectionState == BluConState.disconnected) {
       try {
+        print('开始权限检查...');
+
+        // 检查蓝牙是否开启
+        if (!await FlutterBluePlus.isOn) {
+          print('蓝牙未开启');
+          return;
+        }
+
+        // 尝试直接扫描
         _connectionState = BluConState.connecting;
         notifyListeners();
+
         print('开始扫描设备...');
 
         // 添加超时处理
@@ -62,13 +73,13 @@ class BluetoothViewModel extends ChangeNotifier {
           },
         );
 
-        // 开始扫描
+        // 始扫描
         await FlutterBluePlus.startScan(
           timeout: const Duration(seconds: 30),
           androidUsesFineLocation: true,
         );
       } catch (e) {
-        print('启动扫描错误: $e');
+        print('扫描错误: $e');
         _connectionState = BluConState.disconnected;
         notifyListeners();
       }
@@ -148,30 +159,45 @@ class BluetoothViewModel extends ChangeNotifier {
   }
 
   Future<bool> checkAndRequestPermissions() async {
-    if (await _checkPermissions()) {
-      return true;
+    if (Platform.isIOS) {
+      try {
+        // 先检查蓝牙是否开启
+        final isBluetoothOn = await FlutterBluePlus.isOn;
+        print('蓝牙是否开启: $isBluetoothOn');
+
+        // 尝试直接使用 FlutterBluePlus 的扫描来触发系统权限请求
+        try {
+          await FlutterBluePlus.startScan(timeout: const Duration(seconds: 1));
+          await FlutterBluePlus.stopScan();
+          print('蓝牙扫描测试成功，权限正常');
+          return true;
+        } catch (e) {
+          print('蓝牙扫描测试失败: $e');
+          // 如果扫描失败，尝试打开设置页面
+          final bool didOpen = await openAppSettings();
+          print('打开设置页面: $didOpen');
+          return false;
+        }
+      } catch (e) {
+        print('权限检查过程出错: $e');
+        return false;
+      }
+    } else {
+      // Android 权限检查
+      return await _checkPermissions();
     }
-
-    Map<Permission, PermissionStatus> statuses = await [
-      Permission.bluetooth,
-      Permission.bluetoothScan,
-      Permission.bluetoothConnect,
-      Permission.location,
-    ].request();
-
-    return statuses.values.every((status) => status.isGranted);
   }
 
   Future<bool> _checkPermissions() async {
-    bool bluetoothStatus = await Permission.bluetooth.isGranted;
-    bool bluetoothScanStatus = await Permission.bluetoothScan.isGranted;
-    bool bluetoothConnectStatus = await Permission.bluetoothConnect.isGranted;
-    bool locationStatus = await Permission.location.isGranted;
+    if (Platform.isIOS) {
+      return await Permission.bluetooth.isGranted &&
+          await Permission.location.isGranted;
+    }
 
-    return bluetoothStatus &&
-        bluetoothScanStatus &&
-        bluetoothConnectStatus &&
-        locationStatus;
+    return await Permission.bluetooth.isGranted &&
+        await Permission.bluetoothScan.isGranted &&
+        await Permission.bluetoothConnect.isGranted &&
+        await Permission.location.isGranted;
   }
 
   Future<bool> isBluetoothEnabled() async {

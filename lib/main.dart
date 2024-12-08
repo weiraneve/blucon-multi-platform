@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 import 'bluetooth_view_model.dart';
 
@@ -51,6 +52,29 @@ class _MyHomePageState extends State<MyHomePage> {
         const SnackBar(content: Text('需要蓝牙权限才能继续')),
       );
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    
+    // 应用启动时进行初始化
+    Future.delayed(const Duration(seconds: 1), () async {
+      try {
+        // 检查蓝牙状态
+        final isOn = await FlutterBluePlus.isOn;
+        print('蓝牙状态: $isOn');
+        
+        // 尝试初始化扫描
+        await FlutterBluePlus.startScan(timeout: const Duration(seconds: 1));
+        await FlutterBluePlus.stopScan();
+        
+        // 检查权限
+        await _bluetoothViewModel.checkAndRequestPermissions();
+      } catch (e) {
+        print('初始化错误: $e');
+      }
+    });
   }
 
   @override
