@@ -23,3 +23,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/mode_one_heart.png
+    - assets/images/mode_two_hearts.png
+    - assets/images/mode_three_hearts.png
+    - assets/images/mode_posture0.png
+    - assets/images/mode_posture1.png
+    - assets/images/mode_posture2.png
+    - assets/images/mode_posture3.png
+    - assets/images/mode_posture4.png
+    - assets/images/mode_posture5.png
+    - assets/images/mode_posture6.png
+    - assets/images/mode_stop.png

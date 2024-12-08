@@ -100,20 +100,114 @@ class _MyHomePageState extends State<MyHomePage> {
                         BluConState.connected)
                       Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20.0),
-                            child: ElevatedButton(
-                              onPressed: () =>
-                                  _bluetoothViewModel.sendCommand(1),
-                              child: const Text('启动'),
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              GestureDetector(
+                                onTap: () => _bluetoothViewModel.sendCommand(1),
+                                child: Image.asset(
+                                  'assets/images/mode_one_heart.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () => _bluetoothViewModel.sendCommand(2),
+                                child: Image.asset(
+                                  'assets/images/mode_two_hearts.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () => _bluetoothViewModel.sendCommand(3),
+                                child: Image.asset(
+                                  'assets/images/mode_three_hearts.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20.0),
-                            child: ElevatedButton(
-                              onPressed: () =>
-                                  _bluetoothViewModel.sendCommand(255),
-                              child: const Text('停止'),
+                          const SizedBox(height: 20), // 行间距
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              GestureDetector(
+                                onTap: () => _bluetoothViewModel.sendCommand(4),
+                                child: Image.asset(
+                                  'assets/images/mode_posture0.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () => _bluetoothViewModel.sendCommand(5),
+                                child: Image.asset(
+                                  'assets/images/mode_posture1.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () => _bluetoothViewModel.sendCommand(6),
+                                child: Image.asset(
+                                  'assets/images/mode_posture2.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () => _bluetoothViewModel.sendCommand(7),
+                                child: Image.asset(
+                                  'assets/images/mode_posture3.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () => _bluetoothViewModel.sendCommand(8),
+                                child: Image.asset(
+                                  'assets/images/mode_posture4.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () => _bluetoothViewModel.sendCommand(9),
+                                child: Image.asset(
+                                  'assets/images/mode_posture5.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () =>
+                                    _bluetoothViewModel.sendCommand(10),
+                                child: Image.asset(
+                                  'assets/images/mode_posture5.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 30), // 与停止按钮的间距
+                          // 最后一行：停止按钮
+                          GestureDetector(
+                            onTap: () => _bluetoothViewModel.sendCommand(255),
+                            child: Image.asset(
+                              'assets/images/mode_stop.png',
+                              width: 80,
+                              height: 80,
                             ),
                           ),
                         ],
