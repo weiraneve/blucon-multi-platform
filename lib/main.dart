@@ -86,7 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
                               ? '连接中...'
                               : '连接蓝牙'),
                     ),
-                    // 停止扫描按钮
                     if (_bluetoothViewModel.connectionState ==
                         BluConState.connecting)
                       Padding(
@@ -104,111 +103,196 @@ class _MyHomePageState extends State<MyHomePage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              GestureDetector(
-                                onTap: () => _bluetoothViewModel.sendCommand(1),
-                                child: Image.asset(
-                                  'assets/images/mode_one_heart.png',
-                                  width: 40,
-                                  height: 40,
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(40),
+                                  onTap: () =>
+                                      _bluetoothViewModel.sendCommand(1),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Image.asset(
+                                      'assets/images/mode_one_heart.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              GestureDetector(
-                                onTap: () => _bluetoothViewModel.sendCommand(2),
-                                child: Image.asset(
-                                  'assets/images/mode_two_hearts.png',
-                                  width: 40,
-                                  height: 40,
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(40),
+                                  onTap: () =>
+                                      _bluetoothViewModel.sendCommand(2),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Image.asset(
+                                      'assets/images/mode_two_hearts.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              GestureDetector(
-                                onTap: () => _bluetoothViewModel.sendCommand(3),
-                                child: Image.asset(
-                                  'assets/images/mode_three_hearts.png',
-                                  width: 40,
-                                  height: 40,
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(40),
+                                  onTap: () =>
+                                      _bluetoothViewModel.sendCommand(3),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Image.asset(
+                                      'assets/images/mode_three_hearts.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 20), // 行间距
+                          const SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              GestureDetector(
-                                onTap: () => _bluetoothViewModel.sendCommand(4),
-                                child: Image.asset(
-                                  'assets/images/mode_posture0.png',
-                                  width: 40,
-                                  height: 40,
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(40),
+                                  onTap: () =>
+                                      _bluetoothViewModel.sendCommand(4),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Image.asset(
+                                      'assets/images/mode_posture0.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              GestureDetector(
-                                onTap: () => _bluetoothViewModel.sendCommand(5),
-                                child: Image.asset(
-                                  'assets/images/mode_posture1.png',
-                                  width: 40,
-                                  height: 40,
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(40),
+                                  onTap: () =>
+                                      _bluetoothViewModel.sendCommand(5),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Image.asset(
+                                      'assets/images/mode_posture1.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              GestureDetector(
-                                onTap: () => _bluetoothViewModel.sendCommand(6),
-                                child: Image.asset(
-                                  'assets/images/mode_posture2.png',
-                                  width: 40,
-                                  height: 40,
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(40),
+                                  onTap: () =>
+                                      _bluetoothViewModel.sendCommand(6),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Image.asset(
+                                      'assets/images/mode_posture2.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              GestureDetector(
-                                onTap: () => _bluetoothViewModel.sendCommand(7),
-                                child: Image.asset(
-                                  'assets/images/mode_posture3.png',
-                                  width: 40,
-                                  height: 40,
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(40),
+                                  onTap: () =>
+                                      _bluetoothViewModel.sendCommand(7),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Image.asset(
+                                      'assets/images/mode_posture3.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              GestureDetector(
-                                onTap: () => _bluetoothViewModel.sendCommand(8),
-                                child: Image.asset(
-                                  'assets/images/mode_posture4.png',
-                                  width: 40,
-                                  height: 40,
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(40),
+                                  onTap: () =>
+                                      _bluetoothViewModel.sendCommand(8),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Image.asset(
+                                      'assets/images/mode_posture4.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              GestureDetector(
-                                onTap: () => _bluetoothViewModel.sendCommand(9),
-                                child: Image.asset(
-                                  'assets/images/mode_posture5.png',
-                                  width: 40,
-                                  height: 40,
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(40),
+                                  onTap: () =>
+                                      _bluetoothViewModel.sendCommand(9),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Image.asset(
+                                      'assets/images/mode_posture5.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              GestureDetector(
-                                onTap: () =>
-                                    _bluetoothViewModel.sendCommand(10),
-                                child: Image.asset(
-                                  'assets/images/mode_posture5.png',
-                                  width: 40,
-                                  height: 40,
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(40),
+                                  onTap: () =>
+                                      _bluetoothViewModel.sendCommand(10),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: Image.asset(
+                                      'assets/images/mode_posture5.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 30), // 与停止按钮的间距
-                          // 最后一行：停止按钮
-                          GestureDetector(
-                            onTap: () => _bluetoothViewModel.sendCommand(255),
-                            child: Image.asset(
-                              'assets/images/mode_stop.png',
-                              width: 80,
-                              height: 80,
+                          const SizedBox(height: 30),
+                          Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(40),
+                              onTap: () => _bluetoothViewModel.sendCommand(255),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Image.asset(
+                                  'assets/images/mode_stop.png',
+                                  width: 80,
+                                  height: 80,
+                                ),
+                              ),
                             ),
                           ),
                         ],
