@@ -70,10 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
               builder: (context, child) {
                 return Column(
                   children: [
-                    Text(
-                      '连接状态: ${_bluetoothViewModel.connectionState}',
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
                     const SizedBox(height: 20),
                     // 连接按钮
                     ElevatedButton(
@@ -102,20 +98,26 @@ class _MyHomePageState extends State<MyHomePage> {
                     // 发送命令按钮
                     if (_bluetoothViewModel.connectionState ==
                         BluConState.connected)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20.0),
-                        child: ElevatedButton(
-                          onPressed: () => _bluetoothViewModel.sendCommand(1),
-                          child: const Text('启动'),
-                        ),
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: ElevatedButton(
+                              onPressed: () =>
+                                  _bluetoothViewModel.sendCommand(1),
+                              child: const Text('启动'),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: ElevatedButton(
+                              onPressed: () =>
+                                  _bluetoothViewModel.sendCommand(255),
+                              child: const Text('停止'),
+                            ),
+                          ),
+                        ],
                       ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: ElevatedButton(
-                        onPressed: () => _bluetoothViewModel.sendCommand(255),
-                        child: const Text('停止'),
-                      ),
-                    ),
                   ],
                 );
               },
